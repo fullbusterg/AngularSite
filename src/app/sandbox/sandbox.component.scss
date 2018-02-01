@@ -1,0 +1,135 @@
+.date-bundle {
+    display: flex;
+    justify-content: space-around;
+}
+
+.custom-day {
+    text-align: center;
+    padding: 0.185rem 0.25rem;
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+  }
+
+  .custom-day.range, .custom-day:hover {
+    background-color: rgb(2, 117, 216);
+    color: white;
+  }
+  .custom-day.faded {
+    background-color: rgba(2, 117, 216, 0.4);
+  }
+
+  .ingroup {
+    display: flex;
+    align-items: center; 
+    border: 1px solid rgb(209, 207, 207);
+    padding: .1em;
+    border-radius: .2em;
+    font-size: calc(1em + .75vw);
+    color: rgb(94, 94, 94);
+    cursor: pointer;
+  }
+
+  .col-form-label {
+      cursor: pointer;
+  }
+
+  .fa-calendar {
+      padding: .5em;
+  }
+
+  .fa-minus {
+      font-size: .4em;
+      margin: .8em;
+  }
+
+  label {
+    font-size: calc(.6em + .17vw);
+  }
+
+  .droparrow {
+      margin: 0 .5em 0 .5em;
+  }
+
+  .date-selector {
+      cursor: pointer;
+  }
+
+  .datepicker {
+      margin-top: .25em;
+      padding: 0;
+  }
+
+  .date-links {
+      display: flex;
+      background-color: #f8f9fa !important;
+      justify-content: space-around;
+  }
+
+  .hello {
+      border: none;
+  }
+
+  .link {
+      padding: .5em;
+      color: #0275d8 !important;
+  }
+
+  .dropdown-toggle::after {
+      content: none;
+  }
+
+
+
+  input[type=checkbox] { 
+      display:none; 
+  } 
+
+input[type=checkbox] + label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+}
+
+input[type=checkbox] + label:before { 
+    content: "\f096"; 
+} 
+
+input[type=checkbox] + label:before { 
+    letter-spacing: 10px; 
+} 
+
+input[type=checkbox]:checked + label:before { 
+    content: "\f046"; 
+} 
+
+input[type=checkbox]:checked + label:before { 
+    letter-spacing: 7px; 
+} 
+
+.checkgroup {
+    display: flex;
+    flex-direction: column;
+    margin: .25em;
+    font-size: 4vh;
+    border: 1px solid grey;
+    padding: 1em;
+    padding-right: 3em;
+    color: rgb(94, 94, 94);
+}
+
+.flex-row {
+    display: flex;
+    flex-direction: column;
+}
+
+@media screen and (max-width: 750px) {
+	.flex-row {
+		display: flex;
+		flex-direction: column;
+		//flex-grow: 2;
+	}
+
+	.side-nav {
+		flex: 0 0 2em;
+	}
+}

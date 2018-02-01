@@ -1,0 +1,60 @@
+<h3>Result Report Parameters</h3>
+<hr />
+<h5>Select Date Range</h5>
+
+<div ngbDropdown class="d-inline-block date-selector" #myDrop="ngbDropdown" >
+  <div class="ingroup" ngbDropdownToggle (click)="toggle()">
+    <i class="fa fa-calendar" aria-hidden="true"></i>
+    <label class="col-form-label">{{ fromDate | timeTransform }}</label>
+    <i class="fa fa-minus" aria-hidden="true"></i>
+    <label *ngIf="dateSelected; else today"class="col-form-label">{{ dateSelected | timeTransform}}</label>
+    <ng-template #today>
+      <label class="col-form-label">{{ fromDate | timeTransform }}</label>
+    </ng-template>
+    <i class="fa fa-caret-down droparrow" aria-hidden="true" (click)="$event.stopPropagation(); myDrop.toggle();"></i>
+  </div>
+  <div class="datepicker" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+    <div class="date-links">
+      <a class="link" (click)="selectYesterday()">Yesterday</a>
+      <a class="link" (click)="selectToday()">Today</a>
+    </div>
+    <ngb-datepicker class="hello" #dp ngModel (ngModelChange)="onDateChange($event)" 
+      [displayMonths]="2" [dayTemplate]="t" [navigation]="arrows">
+    </ngb-datepicker>
+      
+      <ng-template #t let-date="date" let-focused="focused">
+        <span class="custom-day"
+              [class.focused]="focused"
+              [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
+              [class.faded]="isHovered(date) || isInside(date)"
+              (mouseenter)="hoveredDate = date"
+              (mouseleave)="hoveredDate = null">
+          {{ date.day }}
+        </span>
+      </ng-template>
+  </div>
+</div>
+
+<br>
+<div class="flex-row">
+<div class="checkgroup">
+    <input id="box1" type="checkbox" />
+    <label for="box1">Checkbox 1</label>
+    <input id="box2" type="checkbox" />
+    <label for="box2">Checkbox 2</label>
+    <input id="box3" type="checkbox" />
+    <label for="box3">Checkbox 3</label>
+    <input id="box4" type="checkbox" />
+    <label for="box4">Checkbox 4</label>
+  </div>
+<div class="checkgroup">
+    <input id="box1" type="checkbox" />
+    <label for="box1">Checkbox 1</label>
+    <input id="box2" type="checkbox" />
+    <label for="box2">Checkbox 2</label>
+    <input id="box3" type="checkbox" />
+    <label for="box3">Checkbox 3</label>
+    <input id="box4" type="checkbox" />
+    <label for="box4">Checkbox 4</label>
+  </div>
+</div>

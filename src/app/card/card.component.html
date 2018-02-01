@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="outline"></div>
+  <div class="innerflex">
+    <img src="../../assets/user.png" id="user" width="auto" height="70px" />
+    <div class="header">Login to account</div>
+    <form [formGroup]="loginForm">
+      <input type="text" class="username" formControlName="username" placeholder="User name" />
+      <password-input id="pass"></password-input>
+      <button class="submit" (click)="onSubmit()">
+        {{ loginPrompt }}
+        <div *ngIf="isLoading" class="loader"></div>
+      </button>
+    </form>
+  </div>
+  <div class="footer">Forgot password?</div>
+</div>
