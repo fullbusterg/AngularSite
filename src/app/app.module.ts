@@ -12,6 +12,7 @@ import { SandboxComponent } from './sandbox/sandbox.component';
 import { TimeTransformPipe } from './pipes/time-transform.pipe';
 import { ChartsModule } from 'ng2-charts';
 import { HttpClientModule } from '@angular/common/http';
+import { CryptoService } from './services/crypto.service';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,9 @@ import { HttpClientModule } from '@angular/common/http';
     ChartsModule,
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    CryptoService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,6 +6,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
 import 'rxjs/add/operator/map';
+import { CryptoService } from './services/crypto.service';
 
 @Component({
   selector: 'app-root',
@@ -24,6 +25,7 @@ export class AppComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
     private http: HttpClient,
+    private cryptoService: CryptoService,
     private renderer: Renderer2) { 
     }
 
@@ -45,9 +47,7 @@ export class AppComponent implements OnInit {
     .subscribe(response => {
       console.log(response); 
     });*/
-    this.http.get('https://min-api.cryptocompare.com/data/all/coinlist').subscribe(data => {
-      console.log(data);
-    });
+    //this.cryptoService.getCoinList();
   }
 
  hidenav() {
