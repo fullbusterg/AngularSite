@@ -2,7 +2,10 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
 import { ViewChild } from '@angular/core';
 import { DialogComponent } from './dialog/dialog.component';
 import { ElementRef } from '@angular/core/';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {DomSanitizer} from '@angular/platform-browser';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-root',
@@ -10,17 +13,17 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  sanitizer: any;
 
-  @ViewChild('trigger') trigger: ElementRef;
   @ViewChild('sidenav') sidenav: ElementRef;
   @ViewChild('item') item: ElementRef;
   sidenavArgs: string[];
   args: string[] = ['Home', 'Dashboard', 'Statistics', 'Report', 'Settings', 'Contact'];
   emptyArgs: string[] = ['', '', '', '', '', ''];
-  display='none';
   sidenavActive: boolean = true;
 
   constructor(private fb: FormBuilder,
+    private http: HttpClient,
     private renderer: Renderer2) { 
     }
 
@@ -38,15 +41,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.sidenavArgs = this.args;
+    /*this.http.get('https://www.cryptocompare.com/media/12318415/42.png')
+    .subscribe(response => {
+      console.log(response); 
+    });*/
+    this.http.get('https://min-api.cryptocompare.com/data/all/coinlist').subscribe(data => {
+      console.log(data);
+    });
   }
-
-  openModal(){
-    this.display='block'; 
- }
-
-  onCloseHandled(){
-    this.display='none'; 
- }
 
  hidenav() {
   if(this.sidenavActive) {
@@ -62,9 +64,4 @@ export class AppComponent implements OnInit {
   this.sidenavActive = !this.sidenavActive;
  }
 
- hide() {
-   setTimeout(() => {
-    this.trigger.nativeElement.click();
-   }, 3000);
- }
 }

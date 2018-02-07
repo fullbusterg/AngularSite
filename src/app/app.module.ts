@@ -11,6 +11,7 @@ import { CardComponent } from './card/card.component';
 import { SandboxComponent } from './sandbox/sandbox.component';
 import { TimeTransformPipe } from './pipes/time-transform.pipe';
 import { ChartsModule } from 'ng2-charts';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ChartsModule } from 'ng2-charts';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     ChartsModule,
     NgbModule.forRoot()
   ],
